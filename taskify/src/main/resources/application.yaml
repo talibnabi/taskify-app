@@ -1,0 +1,11 @@
+
+
+logging:
+  level:
+    com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver: WARN
+    root: info
+    group.aist.mam: debug
+  file:
+    name: ./logs/mam.log
+
+
