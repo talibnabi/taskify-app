@@ -5,10 +5,11 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.taskifyapp.model.dto.request.AdminRegistrationRequest;
+import org.taskifyapp.model.dto.request.OrganizationRegistrationRequest;
+import org.taskifyapp.model.dto.request.RegistrationRequest;
 import org.taskifyapp.model.dto.request.AuthenticationRequest;
 import org.taskifyapp.model.dto.response.AuthAndRegisterResponse;
-import org.taskifyapp.service.impl.AuthServiceImpl;
+import org.taskifyapp.service.AuthService;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -16,16 +17,23 @@ import org.taskifyapp.service.impl.AuthServiceImpl;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final AuthServiceImpl authServiceImpl;
+    private final AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<AuthAndRegisterResponse> register(@Valid @RequestBody AdminRegistrationRequest request) {
-        return ResponseEntity.ok(authServiceImpl.registerUser(request));
+    public ResponseEntity<AuthAndRegisterResponse> register(@Valid @RequestBody RegistrationRequest request) {
+        return ResponseEntity.ok(authService.registerUser(request));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthAndRegisterResponse> register(@Valid @RequestBody AuthenticationRequest request) {
-        return ResponseEntity.ok(authServiceImpl.authenticateUser(request));
+    public ResponseEntity<AuthAndRegisterResponse> login(@Valid @RequestBody AuthenticationRequest request) {
+        authService.authenticateUser(request);
+        return ResponseEntity.ok(authService.authenticateUser(request));
+    }
+
+    @PostMapping("/register-organization")
+    public ResponseEntity<String> registerOrganization(@Valid @RequestBody OrganizationRegistrationRequest request) {
+        authService.registerOrganization(request);
+        return ResponseEntity.ok("Registration successfully! ");
     }
 
 }

@@ -1,4 +1,28 @@
-
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: 
+    username:
+    password: 
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+  mail:
+    host: smtp.gmail.com
+    port: 499
+    username: talibnabiyev@gmail.com
+    password: 
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+#  hibernate:
+#    dialect:
+#      storage_engine: innodb
 
 logging:
   level:

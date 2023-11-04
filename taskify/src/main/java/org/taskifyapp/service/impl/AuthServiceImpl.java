@@ -4,31 +4,46 @@ package org.taskifyapp.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.taskifyapp.model.dto.request.AdminRegistrationRequest;
+import org.taskifyapp.exception.DuplicateException;
+import org.taskifyapp.exception.UserNotFoundException;
+import org.taskifyapp.exception.PasswordNotMatchedException;
+import org.taskifyapp.mapper.OrganizationMapper;
+import org.taskifyapp.model.dto.request.OrganizationRegistrationRequest;
+import org.taskifyapp.model.dto.request.RegistrationRequest;
 import org.taskifyapp.model.dto.request.AuthenticationRequest;
 import org.taskifyapp.model.dto.response.AuthAndRegisterResponse;
+import org.taskifyapp.model.entity.Organization;
 import org.taskifyapp.model.entity.User;
 import org.taskifyapp.model.enums.UserRole;
 import org.taskifyapp.repository.UserRepository;
 import org.taskifyapp.security.JwtService;
-import org.taskifyapp.service.AuthService;
+import org.taskifyapp.service.*;
 
 
 @Service
 @RequiredArgsConstructor
-public class AuthServiceImpl implements AuthService {
+public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
+        OrganizationCheckingFieldService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+    private final UserService userService;
+    private final OrganizationService organizationService;
     private final AuthenticationManager authenticationManager;
+    private final OrganizationMapper organizationMapper;
 
-
+    /*REGISTER ADMIN*/
     @Override
-    public AuthAndRegisterResponse registerUser(AdminRegistrationRequest request) {
+    public AuthAndRegisterResponse registerUser(RegistrationRequest request) {
+        passwordMatchingChecking(request);
+        userUsernameDuplicatingChecking(request);
+        userEmailDuplicatingChecking(request);
         User user = getBuildedUser(request);
         userRepository.save(user);
         String jwt = jwtService.generateToken(user);
@@ -36,6 +51,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
 
+    /*LOGIN ADMIN*/
     @Override
     public AuthAndRegisterResponse authenticateUser(AuthenticationRequest request) {
         getAuthentication(request);
@@ -44,8 +60,84 @@ public class AuthServiceImpl implements AuthService {
         return getAuthAndRegisterResponse(jwt);
     }
 
+    /*REGISTER ORGANIZATION*/
+    @Override
+    public void registerOrganization(OrganizationRegistrationRequest request) {
+        userByUsernameFromOrganization(request);
+        organizationNameDuplicatingChecking(request);
+        Organization organization = organizationMapper
+                .registrationRequestToUserMapper(request);
+        organizationService.saveOrganization(organization);
+        User admin = getUserAdmin();
+        admin.setOrganization(organization);
+        userRepository.save(admin);
+    }
 
-    private User getBuildedUser(AdminRegistrationRequest request) {
+
+    @Override
+    public void passwordMatchingChecking(RegistrationRequest registerRequest) {
+        if (!registerRequest.isPasswordsMatched()) {
+            throw new PasswordNotMatchedException("User password not matched.");
+        }
+    }
+
+    @Override
+    public void userEmailDuplicatingChecking(RegistrationRequest registerRequest) {
+        if (userService.findUserByEmail(registerRequest.getEmail()).isPresent()) {
+            throw new DuplicateException("You cannot create a new user with the same email.");
+        }
+    }
+
+    @Override
+    public void userUsernameDuplicatingChecking(RegistrationRequest registerRequest) {
+        if (userService.findUserByUsername(registerRequest.getUsername()).isPresent()) {
+            throw new DuplicateException("You cannot create a new user with the same username.");
+        }
+    }
+
+    @Override
+    public void organizationNameDuplicatingChecking(OrganizationRegistrationRequest registrationRequest) {
+        if (organizationService.getOrganizationByName(registrationRequest.getOrganizationName()).isPresent()) {
+            throw new DuplicateException("You cannot create a new organization with the same organization name.");
+        }
+    }
+
+    private User findByEmail(AuthenticationRequest request) {
+        return userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found."));
+    }
+
+
+    private void userByUsernameFromOrganization(OrganizationRegistrationRequest request) {
+//        if (request.getUsername().equals(getUsernameAdmin())) {
+//            userService.findUserByUsername(request.getUsername()).orElseThrow(
+//                    () -> new UserNotFoundException("User not found")
+//            );
+//        }
+        userService.findUserByUsername(request.getUsername()).orElseThrow(
+                () -> new UserNotFoundException("User not found")
+        );
+    }
+
+    public User getUserAdmin() {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User) {
+            return (User) authentication.getPrincipal();
+        } else {
+            return null;
+        }
+    }
+
+    public String getUsernameAdmin() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User) {
+            return ((User) authentication.getPrincipal()).getUsername();
+        } else {
+            return null;
+        }
+    }
+    private User getBuildedUser(RegistrationRequest request) {
         return User.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())
@@ -54,17 +146,11 @@ public class AuthServiceImpl implements AuthService {
                 .build();
     }
 
-    private User findByEmail(AuthenticationRequest request) {
-        return userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found."));
-    }
-
     private AuthAndRegisterResponse getAuthAndRegisterResponse(String jwt) {
         return AuthAndRegisterResponse.builder()
                 .token(jwt)
                 .build();
     }
-
 
     private void getAuthentication(AuthenticationRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));

@@ -70,7 +70,6 @@
             <optional>true</optional>
         </dependency>
 
-        <!--	Mysql	-->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
@@ -78,14 +77,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Liquibase migration -->
-        <!--        <dependency>-->
-        <!--            <groupId>org.liquibase</groupId>-->
-        <!--            <artifactId>liquibase-core</artifactId>-->
-        <!--            <version>4.20.0</version>-->
-        <!--        </dependency>-->
-
-        <!-- Apache -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -118,11 +109,10 @@
             <version>0.2.0</version>
         </dependency>
 
-        <!-- Mapstruct -->
         <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>1.4.2.Final</version>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>3.1.0</version>
         </dependency>
 
                 <dependency>
@@ -138,24 +128,7 @@
             <version>2.0.2</version>
         </dependency>
 
-        <!--	JWT	-->
-        <!--        <dependency>-->
-        <!--            <groupId>io.jsonwebtoken</groupId>-->
-        <!--            <artifactId>jjwt-orgjson</artifactId>-->
-        <!--            <version>0.11.5</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>io.jsonwebtoken</groupId>-->
-        <!--            <artifactId>jjwt-impl</artifactId>-->
-        <!--            <version>0.11.5</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>io.jsonwebtoken</groupId>-->
-        <!--            <artifactId>jjwt-jackson</artifactId>-->
-        <!--            <version>0.11.5</version>-->
-        <!--        </dependency>-->
 
-        <!--	Spring test	-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

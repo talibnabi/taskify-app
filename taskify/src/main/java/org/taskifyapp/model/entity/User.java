@@ -47,6 +47,9 @@ public class User implements UserManager, UserDetails, Serializable {
     @Column(name = "user_role")
     private UserRole userRole;
 
+    @Column(name = "code_for_mail_sending")
+    private String codeForMailSending;
+
     @ManyToMany
     @JoinTable(
             name = "task_assigned",
@@ -54,8 +57,8 @@ public class User implements UserManager, UserDetails, Serializable {
             inverseJoinColumns = @JoinColumn(name = "task_id"))
     private Set<Task> userTasks;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userAdmin", cascade = CascadeType.ALL)
-    private Set<Organization> organizationSet;
+    @OneToOne
+    private Organization organization;
 
     @Override
     public Integer getUserRoleWithId() {

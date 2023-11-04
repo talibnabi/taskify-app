@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.taskifyapp.service.impl.UserServiceImpl;
+import org.taskifyapp.service.UserService;
 
 @RestController
 @RequestMapping("/api/user")
@@ -13,6 +13,6 @@ import org.taskifyapp.service.impl.UserServiceImpl;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserServiceImpl userService;
+    private final UserService userService;
 
 }

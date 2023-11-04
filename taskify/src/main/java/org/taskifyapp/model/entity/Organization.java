@@ -32,7 +32,8 @@ public class Organization implements Serializable {
     @Column(name = "address")
     private String address;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @OneToOne
     private User userAdmin;
+
+
 }
