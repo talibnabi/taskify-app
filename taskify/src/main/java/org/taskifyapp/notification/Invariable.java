@@ -1,4 +1,4 @@
-package org.taskifyapp.util.notification;
+package org.taskifyapp.notification;
 
 
 public class Invariable {

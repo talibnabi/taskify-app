@@ -1,11 +1,11 @@
 package org.taskifyapp.controller;
 
-
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.taskifyapp.model.dto.response.UserResponse;
 import org.taskifyapp.service.UserService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
@@ -14,5 +14,25 @@ import org.taskifyapp.service.UserService;
 public class UserController {
 
     private final UserService userService;
+
+    @GetMapping("/{id}")
+    public UserResponse getUserResponseById(@PathVariable("id") Long id) {
+        return userService.getUserResponseById(id);
+    }
+
+    @GetMapping("/{username}")
+    public UserResponse getUserResponseByUsername(@PathVariable("username") String username) {
+        return userService.getUserResponseByUsername(username);
+    }
+
+    @GetMapping("/{email}")
+    public UserResponse getUserResponseByEmail(@PathVariable("email") String email) {
+        return userService.getUserResponseByEmail(email);
+    }
+
+    @GetMapping("/organization/{id}")
+    public List<UserResponse> getAllUserResponseByOrganizationId(@PathVariable("id") Long id) {
+        return userService.getUserResponseByOrganizationId(id);
+    }
 
 }

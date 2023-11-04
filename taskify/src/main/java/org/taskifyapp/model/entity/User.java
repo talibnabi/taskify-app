@@ -16,7 +16,6 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -55,7 +54,7 @@ public class User implements UserManager, UserDetails, Serializable {
             name = "task_assigned",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "task_id"))
-    private Set<Task> userTasks;
+    private List<Task> userTasks;
 
     @OneToOne
     private Organization organization;

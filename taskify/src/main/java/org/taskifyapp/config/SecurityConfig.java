@@ -27,10 +27,10 @@ public class SecurityConfig {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/admin/**",
-                        "/task/admin/**")
+                .requestMatchers("/api/for-admin/**",
+                        "/api/task/for-admin/**")
                 .hasRole("ADMIN")
-                .requestMatchers("/task/user/**")
+                .requestMatchers("/api/task/for-user/**")
                 .hasRole("USER")
                 .requestMatchers("/auth/**",
 

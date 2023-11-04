@@ -1,4 +1,4 @@
-package org.taskifyapp.exception;
+package org.taskifyapp.exception.custom;
 
 
 public class OrganizationNotFoundException extends RuntimeException {

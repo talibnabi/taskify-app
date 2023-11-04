@@ -1,13 +1,13 @@
 package org.taskifyapp.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.taskifyapp.exception.OrganizationNotFoundException;
-import org.taskifyapp.exception.DuplicateException;
-import org.taskifyapp.exception.PasswordNotMatchedException;
-import org.taskifyapp.mapper.UserMapper;
+import org.taskifyapp.exception.custom.OrganizationNotFoundException;
+import org.taskifyapp.exception.custom.DuplicateException;
+import org.taskifyapp.exception.custom.PasswordNotMatchedException;
 import org.taskifyapp.model.dto.request.RegistrationRequest;
 import org.taskifyapp.model.entity.Organization;
 import org.taskifyapp.model.entity.User;
@@ -22,7 +22,7 @@ import org.taskifyapp.service.UserService;
 public class AdminServiceImpl implements AdminService, UserCheckingFieldService {
     private final UserService userService;
     private final OrganizationService organizationService;
-    private final UserMapper userMapper;
+    private final ModelMapper modelMapper;
 
     @Override
     public void createUser(RegistrationRequest registerRequest) {
@@ -30,7 +30,7 @@ public class AdminServiceImpl implements AdminService, UserCheckingFieldService 
         userUsernameDuplicatingChecking(registerRequest);
         userEmailDuplicatingChecking(registerRequest);
         User admin = getUserAdmin();
-        User user = userMapper.registrationRequestToUserMapper(registerRequest);
+        User user = modelMapper.map(registerRequest, User.class);
         Organization organization = getOrganizationForUser(admin);
         user.setOrganization(organization);
     }

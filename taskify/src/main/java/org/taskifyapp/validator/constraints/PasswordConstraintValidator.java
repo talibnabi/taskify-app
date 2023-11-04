@@ -1,4 +1,4 @@
-package org.taskifyapp.validator;
+package org.taskifyapp.validator.constraints;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

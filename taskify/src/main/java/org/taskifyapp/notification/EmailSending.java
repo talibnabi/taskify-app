@@ -1,4 +1,4 @@
-package org.taskifyapp.util.notification;
+package org.taskifyapp.notification;
 
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;

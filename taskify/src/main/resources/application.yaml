@@ -20,6 +20,7 @@ spring:
           auth: true
           starttls:
             enable: true
+
 #  hibernate:
 #    dialect:
 #      storage_engine: innodb

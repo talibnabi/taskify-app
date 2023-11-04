@@ -2,6 +2,7 @@ package org.taskifyapp.service.impl;
 
 
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -9,10 +10,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.taskifyapp.exception.DuplicateException;
-import org.taskifyapp.exception.UserNotFoundException;
-import org.taskifyapp.exception.PasswordNotMatchedException;
-import org.taskifyapp.mapper.OrganizationMapper;
+import org.taskifyapp.exception.custom.DuplicateException;
+import org.taskifyapp.exception.custom.UserNotFoundException;
+import org.taskifyapp.exception.custom.PasswordNotMatchedException;
 import org.taskifyapp.model.dto.request.OrganizationRegistrationRequest;
 import org.taskifyapp.model.dto.request.RegistrationRequest;
 import org.taskifyapp.model.dto.request.AuthenticationRequest;
@@ -36,7 +36,7 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
     private final UserService userService;
     private final OrganizationService organizationService;
     private final AuthenticationManager authenticationManager;
-    private final OrganizationMapper organizationMapper;
+    private final ModelMapper modelMapper;
 
     /*REGISTER ADMIN*/
     @Override
@@ -65,10 +65,9 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
     public void registerOrganization(OrganizationRegistrationRequest request) {
         userByUsernameFromOrganization(request);
         organizationNameDuplicatingChecking(request);
-        Organization organization = organizationMapper
-                .registrationRequestToUserMapper(request);
+        Organization organization = modelMapper.map(request, Organization.class);
         organizationService.saveOrganization(organization);
-        User admin = getUserAdmin();
+        User admin = getUserFromSecurityContextHolder();
         admin.setOrganization(organization);
         userRepository.save(admin);
     }
@@ -119,8 +118,7 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
         );
     }
 
-    public User getUserAdmin() {
-
+    public User getUserFromSecurityContextHolder() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof User) {
             return (User) authentication.getPrincipal();
@@ -129,7 +127,7 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
         }
     }
 
-    public String getUsernameAdmin() {
+    public String getUsernameFromSecurityContextHolder() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof User) {
             return ((User) authentication.getPrincipal()).getUsername();
@@ -137,6 +135,7 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
             return null;
         }
     }
+
     private User getBuildedUser(RegistrationRequest request) {
         return User.builder()
                 .username(request.getUsername())

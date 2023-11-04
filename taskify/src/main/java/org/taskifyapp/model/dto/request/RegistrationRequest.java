@@ -3,8 +3,8 @@ package org.taskifyapp.model.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import org.taskifyapp.validator.ValidEmail;
-import org.taskifyapp.validator.ValidPassword;
+import org.taskifyapp.validator.constraints.ValidEmail;
+import org.taskifyapp.validator.constraints.ValidPassword;
 
 import java.util.Objects;
 

@@ -10,7 +10,7 @@ import org.taskifyapp.model.interfaces.TaskManager;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Data
@@ -27,6 +27,12 @@ public class Task implements TaskManager, Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "task_sequence")
     private Long id;
 
+    @Column(name = "sender_id")
+    private Long senderId;
+
+    @Column(name = "receiver_id")
+    private Long receiverId;
+
     @Column(name = "title")
     private String title;
 
@@ -41,7 +47,7 @@ public class Task implements TaskManager, Serializable {
     private TaskStatus taskStatus;
 
     @ManyToMany(mappedBy = "userTasks")
-    private Set<User> userAssigners;
+    private List<User> userAssigners;
 
     @Override
     public Integer getTaskStatusWithId() {

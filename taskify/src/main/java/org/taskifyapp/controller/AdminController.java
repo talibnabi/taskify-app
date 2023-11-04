@@ -8,7 +8,7 @@ import org.taskifyapp.model.dto.request.RegistrationRequest;
 import org.taskifyapp.service.AdminService;
 
 @RestController
-@RequestMapping("/api/admin")
+@RequestMapping("/api/for-admin")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequiredArgsConstructor
 public class AdminController {
