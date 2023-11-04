@@ -72,7 +72,6 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
         userRepository.save(admin);
     }
 
-
     @Override
     public void passwordMatchingChecking(RegistrationRequest registerRequest) {
         if (!registerRequest.isPasswordsMatched()) {

@@ -47,8 +47,8 @@ public class EmailSending {
 
     @SneakyThrows
     private void sendEmail(String toAddress, String content, String subject) {
-        String fromAddress = "talibnabiyev@gmail.com";
-        String senderName = "taskify corporation";
+        String fromAddress = "";
+        String senderName = "";
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
         helper.setFrom(fromAddress, senderName);

@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .hasRole("ADMIN")
                 .requestMatchers("/api/task/for-user/**")
                 .hasRole("USER")
-                .requestMatchers("/auth/**",
+                .requestMatchers("api/auth/**",
 
                         "/v3/api-docs/**",
                         "/swagger-ui/**",

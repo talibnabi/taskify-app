@@ -15,17 +15,17 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public UserResponse getUserResponseById(@PathVariable("id") Long id) {
         return userService.getUserResponseById(id);
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/username/{username}")
     public UserResponse getUserResponseByUsername(@PathVariable("username") String username) {
         return userService.getUserResponseByUsername(username);
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("/email/{email}")
     public UserResponse getUserResponseByEmail(@PathVariable("email") String email) {
         return userService.getUserResponseByEmail(email);
     }

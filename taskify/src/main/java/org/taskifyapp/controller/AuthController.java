@@ -1,6 +1,5 @@
 package org.taskifyapp.controller;
 
-
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
