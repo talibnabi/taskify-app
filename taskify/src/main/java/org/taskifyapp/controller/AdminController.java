@@ -3,6 +3,7 @@ package org.taskifyapp.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.taskifyapp.model.dto.request.RegistrationRequest;
 import org.taskifyapp.service.AdminService;
@@ -16,7 +17,8 @@ public class AdminController {
     private final AdminService adminService;
 
     @PostMapping("/user-create")
-    public void createUser(@Valid @RequestBody RegistrationRequest request) {
+    public ResponseEntity<String> createUser(@Valid @RequestBody RegistrationRequest request) {
         adminService.createUser(request);
+        return ResponseEntity.ok("User created successfully!");
     }
 }
