@@ -5,8 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -38,6 +36,15 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
     private final AuthenticationManager authenticationManager;
     private final ModelMapper modelMapper;
 
+
+    /**
+     * Registers a new user with the provided registration request data.
+     * Performs password matching checking, username duplicating checking, and email duplicating checking.
+     * If checks pass, the user is created, saved, and a JWT token is generated for authentication.
+     *
+     * @param request The registration request containing user information.
+     * @return An authentication and registration response containing a JWT token upon successful registration.
+     */
     @Override
     public AuthAndRegisterResponse registerUser(RegistrationRequest request) {
         passwordMatchingChecking(request);
@@ -50,6 +57,13 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
     }
 
 
+    /**
+     * Authenticates a user using the provided authentication request.
+     * Performs user authentication and generates a JWT token for the authenticated user.
+     *
+     * @param request The authentication request containing user credentials.
+     * @return An authentication and registration response containing a JWT token upon successful authentication.
+     */
     @Override
     public AuthAndRegisterResponse authenticateUser(AuthenticationRequest request) {
         getAuthentication(request);
@@ -59,14 +73,21 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
     }
 
 
+    /**
+     * Registers a new organization based on the provided organization registration request.
+     * Retrieves the admin user by username, checks for organization name duplications,
+     * creates and saves the organization, assigns it to the admin user, and updates the user's information.
+     *
+     * @param request The organization registration request containing organization and admin user information.
+     */
     @Override
     public void registerOrganization(OrganizationRegistrationRequest request) {
         User user = getUserByUsername(request.getUsername());
         organizationNameDuplicatingChecking(request);
         Organization organization = modelMapper.map(request, Organization.class);
-        organization.setUserAdmin(user);
+        organization.setUserId(user);
         organizationService.saveOrganization(organization);
-        user.setOrganization(organization);
+        user.setOrganizationId(organization);
         userRepository.save(user);
     }
 

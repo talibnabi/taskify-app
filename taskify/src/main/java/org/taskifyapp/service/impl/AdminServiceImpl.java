@@ -32,7 +32,7 @@ public class AdminServiceImpl implements AdminService, UserCheckingFieldService 
         User admin = getUserAdmin();
         User user = modelMapper.map(registerRequest, User.class);
         Organization organization = getOrganizationForUser(admin);
-        user.setOrganization(organization);
+        user.setOrganizationId(organization);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class AdminServiceImpl implements AdminService, UserCheckingFieldService 
     }
 
     private Organization getOrganizationForUser(User admin) {
-        return organizationService.getOrganizationById(admin.getOrganization().getId()).stream().findFirst().orElseThrow(
+        return organizationService.getOrganizationById(admin.getOrganizationId().getId()).stream().findFirst().orElseThrow(
                 () -> new OrganizationNotFoundException("Organization not found"));
     }
 
