@@ -62,7 +62,6 @@ public class TaskServiceImpl implements TaskService {
     public void create(TaskCreationRequest request) {
         String adminUsername = getAdminUsernameFromSecurityContextHolder();
         User sender = getUser(adminUsername);
-        System.out.println(sender.getOrganization().getId());
         UserResponse receiver = getUserResponse(request.getReceiverId());
         if (organizationSamenessChecker(sender, receiver)) {
             Task task = modelMapper.map(request, Task.class);
@@ -116,11 +115,16 @@ public class TaskServiceImpl implements TaskService {
         return true;
     }
 
-
     private List<Task> getAllTask(Long userId) {
-        User user = userRepository.findUserById(userId).orElseThrow();
+        User user = getUserByUserId(userId);
         List<Task> taskList = user.getTasks();
         return taskList;
+    }
+
+    private User getUserByUserId(Long userId) {
+        return userRepository.findUserById(userId).orElseThrow(
+                () -> new UserNotFoundException("User not found")
+        );
     }
 
     private Task getTask(Long id) {
