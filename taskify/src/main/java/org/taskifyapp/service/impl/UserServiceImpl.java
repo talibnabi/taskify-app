@@ -46,11 +46,6 @@ public class UserServiceImpl implements UserService {
         return userResponses;
     }
 
-    @Override
-    public void saveUser(User user) {
-        userRepository.save(user);
-    }
-
     private User getUserByEmail(String email) {
         return userRepository.findByEmail(email).orElseThrow(
                 () -> new UserNotFoundException("User not found")
