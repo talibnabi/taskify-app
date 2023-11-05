@@ -16,9 +16,17 @@ public class AdminController {
 
     private final AdminService adminService;
 
+
+    /**
+     * Create a new user.
+     *
+     * @param request The user registration request data.
+     * @return ResponseEntity with a success message upon user creation.
+     */
     @PostMapping("/user-create")
     public ResponseEntity<String> createUser(@Valid @RequestBody RegistrationRequest request) {
         adminService.createUser(request);
         return ResponseEntity.ok("User created successfully!");
     }
+
 }

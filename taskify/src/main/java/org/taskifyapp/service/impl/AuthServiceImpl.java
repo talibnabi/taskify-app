@@ -38,7 +38,6 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
     private final AuthenticationManager authenticationManager;
     private final ModelMapper modelMapper;
 
-    /*REGISTER ADMIN*/
     @Override
     public AuthAndRegisterResponse registerUser(RegistrationRequest request) {
         passwordMatchingChecking(request);
