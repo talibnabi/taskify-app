@@ -50,7 +50,6 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
     }
 
 
-    /*LOGIN ADMIN*/
     @Override
     public AuthAndRegisterResponse authenticateUser(AuthenticationRequest request) {
         getAuthentication(request);
@@ -59,17 +58,18 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
         return getAuthAndRegisterResponse(jwt);
     }
 
-    /*REGISTER ORGANIZATION*/
+
     @Override
     public void registerOrganization(OrganizationRegistrationRequest request) {
-        userByUsernameFromOrganization(request);
+        User user = getUserByUsername(request.getUsername());
         organizationNameDuplicatingChecking(request);
         Organization organization = modelMapper.map(request, Organization.class);
+        organization.setUserAdmin(user);
         organizationService.saveOrganization(organization);
-        User admin = getUserFromSecurityContextHolder();
-        admin.setOrganization(organization);
-        userRepository.save(admin);
+        user.setOrganization(organization);
+        userRepository.save(user);
     }
+
 
     @Override
     public void passwordMatchingChecking(RegistrationRequest registerRequest) {
@@ -105,35 +105,6 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
     }
 
 
-    private void userByUsernameFromOrganization(OrganizationRegistrationRequest request) {
-//        if (request.getUsername().equals(getUsernameAdmin())) {
-//            userService.findUserByUsername(request.getUsername()).orElseThrow(
-//                    () -> new UserNotFoundException("User not found")
-//            );
-//        }
-        userService.findUserByUsername(request.getUsername()).orElseThrow(
-                () -> new UserNotFoundException("User not found")
-        );
-    }
-
-    public User getUserFromSecurityContextHolder() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.getPrincipal() instanceof User) {
-            return (User) authentication.getPrincipal();
-        } else {
-            return null;
-        }
-    }
-
-    public String getUsernameFromSecurityContextHolder() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.getPrincipal() instanceof User) {
-            return ((User) authentication.getPrincipal()).getUsername();
-        } else {
-            return null;
-        }
-    }
-
     private User getBuildedUser(RegistrationRequest request) {
         return User.builder()
                 .username(request.getUsername())
@@ -151,6 +122,12 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
 
     private void getAuthentication(AuthenticationRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+    }
+
+    private User getUserByUsername(String username) {
+        return userService.findUserByUsername(username).orElseThrow(
+                () -> new UserNotFoundException("User not found with this username")
+        );
     }
 
 }
