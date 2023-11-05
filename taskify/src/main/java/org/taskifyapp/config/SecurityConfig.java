@@ -1,6 +1,7 @@
 package org.taskifyapp.config;
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -11,6 +12,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.taskifyapp.security.JwtAuthFilter;
 
+import static org.taskifyapp.util.SecurityConfigConstants.*;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -19,26 +22,20 @@ public class SecurityConfig {
 
     private final AuthenticationProvider authenticationProvider;
 
+    @SneakyThrows
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
+    public SecurityFilterChain securityFilterChain(HttpSecurity security) {
+        security
                 .cors()
                 .and()
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/for-admin/**",
-                        "/api/task/for-admin/**")
-                .hasRole("ADMIN")
-                .requestMatchers("/api/task/for-user/**")
-                .hasRole("USER")
-                .requestMatchers("api/auth/**",
-
-                        "/v3/api-docs/**",
-                        "/swagger-ui/**",
-                        "/swagger-ui.html",
-                        "/v2/api-docs/**",
-                        "/swagger-resources/**")
+                .requestMatchers(ADMIN_MATCHER)
+                .hasRole(ADMIN_ROLE)
+                .requestMatchers(USER_MATCHER)
+                .hasRole(USER_ROLE)
+                .requestMatchers(OTHER_MATCHER)
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -48,8 +45,7 @@ public class SecurityConfig {
                 .and()
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFiler, UsernamePasswordAuthenticationFilter.class);
-
-        return httpSecurity.build();
+        return security.build();
 
     }
 }

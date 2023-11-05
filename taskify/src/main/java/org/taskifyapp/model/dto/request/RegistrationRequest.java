@@ -3,8 +3,8 @@ package org.taskifyapp.model.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import org.taskifyapp.validator.constraints.ValidEmail;
-import org.taskifyapp.validator.constraints.ValidPassword;
+import org.taskifyapp.validator.constraints.validation.EmailValidation;
+import org.taskifyapp.validator.constraints.validation.PasswordValidation;
 
 import java.util.Objects;
 
@@ -13,13 +13,13 @@ public class RegistrationRequest {
 
     private String username;
 
-    @ValidEmail
+    @EmailValidation
     private String email;
 
-    @ValidPassword
+    @PasswordValidation
     private String password;
 
-    @ValidPassword
+    @PasswordValidation
     private String passwordConfirmation;
 
     @JsonIgnore

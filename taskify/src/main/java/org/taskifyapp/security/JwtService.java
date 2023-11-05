@@ -6,19 +6,22 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.taskifyapp.model.enums.UserRole;
 
 import java.security.Key;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import static org.taskifyapp.util.JwtServiceUtil.*;
 
 @Service
 public class JwtService {
 
-    private final static String SECRET_KEY = "88a920881cb162d917ef47935e108c40b7b0c3927142e7337370bb0cbe117971";
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -30,7 +33,14 @@ public class JwtService {
     }
 
     public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+        String authorities = userDetails.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.joining(","));
+
+        HashMap<String, Object> claims = new HashMap<>();
+        claims.put(JWT_AUTHORITIES_KEY, authorities);
+
+        return generateToken(claims, userDetails);
     }
 
     public String generateToken(
@@ -48,7 +58,7 @@ public class JwtService {
     }
 
     private Key getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
+        byte[] keyBytes = Decoders.BASE64.decode(JWT_SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
@@ -72,6 +82,28 @@ public class JwtService {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+    }
+
+    public Set<SimpleGrantedAuthority> getGrantedValues(Claims claims) {
+        Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+        String role = claims.get(JWT_AUTHORITIES_KEY).toString();
+
+        switch (UserRole.valueOf(role)) {
+            case ADMIN -> {
+                authorities.add(new SimpleGrantedAuthority(JWT_SERVICE_ADMIN));
+                authorities.add(new SimpleGrantedAuthority(JWT_SERVICE_USER));
+            }
+            case USER -> authorities.add(new SimpleGrantedAuthority(JWT_SERVICE_USER));
+            default -> authorities.add(new SimpleGrantedAuthority(JWT_SERVICE_UNKNOWN));
+        }
+
+        return authorities;
+    }
+
+
+    public Set<SimpleGrantedAuthority> getGrantedValues(String token) {
+        Claims claims = extractAllClaims(token);
+        return getGrantedValues(claims);
     }
 
 }

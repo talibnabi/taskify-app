@@ -19,5 +19,4 @@ public class AdminController {
     public void createUser(@Valid @RequestBody RegistrationRequest request) {
         adminService.createUser(request);
     }
-
 }

@@ -1,9 +1,9 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: #your url
-    username: #your username
-    password: #your password
+    url: jdbc:mysql://allinone.cn5daduvgses.us-east-1.rds.amazonaws.com:3306/taskify
+    username: admin
+    password: Admin1234
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
@@ -11,8 +11,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: #username for email
-    password: #password for email
+    username: #username for "email notification"
+    password: #password for "email notification"
     protocol: smtp
     properties:
       mail:

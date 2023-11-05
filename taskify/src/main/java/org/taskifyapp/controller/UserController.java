@@ -30,7 +30,7 @@ public class UserController {
         return userService.getUserResponseByEmail(email);
     }
 
-    @GetMapping("/organization/{id}")
+    @GetMapping("/organization/id/{id}")
     public List<UserResponse> getAllUserResponseByOrganizationId(@PathVariable("id") Long id) {
         return userService.getUserResponseByOrganizationId(id);
     }
