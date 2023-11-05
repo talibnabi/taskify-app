@@ -21,7 +21,6 @@ public class ModelMapperConfig
 
         TypeMap<User, UserResponse> userToUserResponse = modelMapper.createTypeMap(User.class, UserResponse.class);
         TypeMap<Task, TaskResponse> taskToTaskResponse = modelMapper.createTypeMap(Task.class, TaskResponse.class);
-        TypeMap<Task, TaskResponse> taskToTaskResponseMap = modelMapper.createTypeMap(Task.class, TaskResponse.class);
 
         userToUserResponse.addMapping(src -> src.getOrganization().getId(), UserResponse::setOrganizationId);
         taskToTaskResponse.addMapping(src -> src.getTaskStatus(), TaskResponse::setStatus);

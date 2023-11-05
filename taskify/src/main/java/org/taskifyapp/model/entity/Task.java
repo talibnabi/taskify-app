@@ -48,8 +48,6 @@ public class Task implements TaskManager, Serializable {
     @Column(name = "task_status")
     private TaskStatus taskStatus;
 
-//    @ManyToMany(mappedBy = "userTasks")
-//    private List<User> userAssigners;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")

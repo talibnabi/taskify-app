@@ -49,12 +49,6 @@ public class User implements UserManager, UserDetails, Serializable {
     @Column(name = "code_for_mail_sending")
     private String codeForMailSending;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "task_assigned",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "task_id"))
-//    private List<Task> userTasks;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
     private List<Task> tasks;
