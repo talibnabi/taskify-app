@@ -78,5 +78,4 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private User userPrincipal(String token, String subject) {
         return new User(subject, "", simpleGrantedAuthoritySet(token));
     }
-
 }

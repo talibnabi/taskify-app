@@ -18,6 +18,7 @@ import static org.taskifyapp.util.SecurityConfigConstants.*;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
+
     private final JwtAuthFilter jwtAuthFiler;
 
     private final AuthenticationProvider authenticationProvider;

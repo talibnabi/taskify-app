@@ -31,7 +31,6 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtServiceImpl jwtServiceImpl;
-    private final UserService userService;
     private final OrganizationService organizationService;
     private final AuthenticationManager authenticationManager;
     private final ModelMapper modelMapper;

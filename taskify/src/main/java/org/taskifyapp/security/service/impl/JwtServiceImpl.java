@@ -1,6 +1,7 @@
 package org.taskifyapp.security.service.impl;
 
 
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -14,7 +15,11 @@ import org.taskifyapp.model.enums.UserRole;
 import org.taskifyapp.security.service.JwtService;
 
 import java.security.Key;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -22,7 +27,6 @@ import static org.taskifyapp.util.JwtServiceUtil.*;
 
 @Service
 public class JwtServiceImpl implements JwtService {
-
 
     @Override
     public String extractUsername(String token) {
