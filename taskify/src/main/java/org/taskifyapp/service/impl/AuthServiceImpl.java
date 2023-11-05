@@ -21,7 +21,7 @@ import org.taskifyapp.model.entity.Organization;
 import org.taskifyapp.model.entity.User;
 import org.taskifyapp.model.enums.UserRole;
 import org.taskifyapp.repository.UserRepository;
-import org.taskifyapp.security.JwtService;
+import org.taskifyapp.security.service.impl.JwtServiceImpl;
 import org.taskifyapp.service.*;
 
 
@@ -32,7 +32,7 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtService jwtService;
+    private final JwtServiceImpl jwtServiceImpl;
     private final UserService userService;
     private final OrganizationService organizationService;
     private final AuthenticationManager authenticationManager;
@@ -46,7 +46,7 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
         userEmailDuplicatingChecking(request);
         User user = getBuildedUser(request);
         userRepository.save(user);
-        String jwt = jwtService.generateToken(user);
+        String jwt = jwtServiceImpl.generateToken(user);
         return getAuthAndRegisterResponse(jwt);
     }
 
@@ -56,7 +56,7 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
     public AuthAndRegisterResponse authenticateUser(AuthenticationRequest request) {
         getAuthentication(request);
         User user = findByEmail(request);
-        String jwt = jwtService.generateToken(user);
+        String jwt = jwtServiceImpl.generateToken(user);
         return getAuthAndRegisterResponse(jwt);
     }
 

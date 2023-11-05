@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.taskifyapp.security.JwtAuthFilter;
+import org.taskifyapp.security.filter.JwtAuthFilter;
 
 import static org.taskifyapp.util.SecurityConfigConstants.*;
 

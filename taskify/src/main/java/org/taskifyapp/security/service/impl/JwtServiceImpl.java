@@ -1,4 +1,4 @@
-package org.taskifyapp.security;
+package org.taskifyapp.security.service.impl;
 
 
 import io.jsonwebtoken.Claims;
@@ -11,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.taskifyapp.model.enums.UserRole;
+import org.taskifyapp.security.service.JwtService;
 
 import java.security.Key;
 import java.util.*;
@@ -20,18 +21,21 @@ import java.util.stream.Collectors;
 import static org.taskifyapp.util.JwtServiceUtil.*;
 
 @Service
-public class JwtService {
+public class JwtServiceImpl implements JwtService {
 
 
+    @Override
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
+    @Override
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
 
+    @Override
     public String generateToken(UserDetails userDetails) {
         String authorities = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
@@ -43,28 +47,45 @@ public class JwtService {
         return generateToken(claims, userDetails);
     }
 
-    public String generateToken(
-            Map<String, Object> extraClaims,
-            UserDetails userDetails
-    ) {
+    @Override
+    public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+                .setIssuedAt(jwtIssuedDate())
+                .setExpiration(jwtExpirationDate())
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    private Key getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(JWT_SECRET_KEY);
-        return Keys.hmacShaKeyFor(keyBytes);
-    }
-
+    @Override
     public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }
+
+    @Override
+    public Set<SimpleGrantedAuthority> simpleGrantedAuthorities(Claims claims) {
+        Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+        String role = claims.get(JWT_AUTHORITIES_KEY).toString();
+
+        switch (UserRole.valueOf(role)) {
+            case ADMIN -> {
+                authorities.add(new SimpleGrantedAuthority(JWT_SERVICE_ADMIN));
+                authorities.add(new SimpleGrantedAuthority(JWT_SERVICE_USER));
+            }
+            case USER -> authorities.add(new SimpleGrantedAuthority(JWT_SERVICE_USER));
+            default -> authorities.add(new SimpleGrantedAuthority(JWT_SERVICE_UNKNOWN));
+        }
+
+        return authorities;
+    }
+
+    @Override
+    public Set<SimpleGrantedAuthority> simpleGrantedAuthorities(String token) {
+        Claims claims = extractAllClaims(token);
+        return simpleGrantedAuthorities(claims);
     }
 
     private boolean isTokenExpired(String token) {
@@ -84,26 +105,18 @@ public class JwtService {
                 .getBody();
     }
 
-    public Set<SimpleGrantedAuthority> getGrantedValues(Claims claims) {
-        Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-        String role = claims.get(JWT_AUTHORITIES_KEY).toString();
 
-        switch (UserRole.valueOf(role)) {
-            case ADMIN -> {
-                authorities.add(new SimpleGrantedAuthority(JWT_SERVICE_ADMIN));
-                authorities.add(new SimpleGrantedAuthority(JWT_SERVICE_USER));
-            }
-            case USER -> authorities.add(new SimpleGrantedAuthority(JWT_SERVICE_USER));
-            default -> authorities.add(new SimpleGrantedAuthority(JWT_SERVICE_UNKNOWN));
-        }
-
-        return authorities;
+    private Date jwtIssuedDate() {
+        return new Date(System.currentTimeMillis());
     }
 
+    private Date jwtExpirationDate() {
+        return new Date(System.currentTimeMillis() + 1000 * 60 * 24);
+    }
 
-    public Set<SimpleGrantedAuthority> getGrantedValues(String token) {
-        Claims claims = extractAllClaims(token);
-        return getGrantedValues(claims);
+    private Key getSignInKey() {
+        byte[] keyBytes = Decoders.BASE64.decode(JWT_SECRET_KEY);
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 
 }
