@@ -112,3 +112,109 @@ Caused by: java.lang.ClassNotFoundException: org.taskifyapp.repository.UserRepos
 2023-11-05T05:50:47.947-05:00  INFO 4495 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-11-05T05:50:47.966-05:00  INFO 4495 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-11-05T05:50:49.710-05:00  INFO 4495 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-05T06:22:35.572-05:00  INFO 3876 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : Starting TaskifyAppApplication using Java 17.0.9 with PID 3876 (/home/talibnabi/Documents/taskify-app/taskify/target/classes started by talibnabi in /home/talibnabi/Documents/taskify-app/taskify)
+2023-11-05T06:22:35.579-05:00  INFO 3876 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-11-05T06:22:35.833-05:00  INFO 3876 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-05T06:22:35.835-05:00  INFO 3876 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-05T06:22:39.699-05:00  INFO 3876 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-05T06:22:40.008-05:00  INFO 3876 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 284 ms. Found 3 JPA repository interfaces.
+2023-11-05T06:22:42.818-05:00  INFO 3876 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-11-05T06:22:42.845-05:00  INFO 3876 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-05T06:22:42.847-05:00  INFO 3876 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2023-11-05T06:22:43.121-05:00  INFO 3876 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-05T06:22:43.124-05:00  INFO 3876 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 7286 ms
+2023-11-05T06:22:43.726-05:00  INFO 3876 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-05T06:22:43.886-05:00  INFO 3876 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-11-05T06:22:45.141-05:00  INFO 3876 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-05T06:22:48.761-05:00  INFO 3876 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@33311073
+2023-11-05T06:22:48.770-05:00  INFO 3876 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-05T06:22:49.494-05:00  INFO 3876 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-11-05T06:22:55.509-05:00  INFO 3876 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-05T06:22:55.548-05:00  INFO 3876 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T06:22:58.552-05:00  WARN 3876 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-05T06:23:01.200-05:00  INFO 3876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@618a859f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@108d4936, org.springframework.security.web.context.SecurityContextHolderFilter@574a8867, org.springframework.security.web.header.HeaderWriterFilter@3455d8aa, org.springframework.web.filter.CorsFilter@6eaf13fa, org.springframework.security.web.authentication.logout.LogoutFilter@302a2ead, org.taskifyapp.security.filter.JwtAuthFilter@2c4018d9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5789514a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6b61b709, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@d09f2a3, org.springframework.security.web.session.SessionManagementFilter@4723501f, org.springframework.security.web.access.ExceptionTranslationFilter@4c5502d2, org.springframework.security.web.access.intercept.AuthorizationFilter@6f43d6be]
+2023-11-05T06:23:02.248-05:00  INFO 3876 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-11-05T06:23:02.541-05:00  INFO 3876 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-11-05T06:23:02.609-05:00  INFO 3876 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : Started TaskifyAppApplication in 29.149 seconds (process running for 33.086)
+2023-11-05T06:23:05.699-05:00  INFO 3876 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-11-05T06:23:05.723-05:00  INFO 3876 --- [Thread-5] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-11-05T06:23:05.741-05:00  WARN 3876 --- [Thread-5] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.9/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.9/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.9/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.9/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.9/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.9/java.lang.Thread.run(Thread.java:840)
+2023-11-05T06:23:05.745-05:00  WARN 3876 --- [Thread-5] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 connection adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.9/sun.nio.ch.Net.poll(Native Method)
+ java.base@17.0.9/sun.nio.ch.NioSocketImpl.park(NioSocketImpl.java:186)
+ java.base@17.0.9/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:290)
+ java.base@17.0.9/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:314)
+ java.base@17.0.9/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355)
+ java.base@17.0.9/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808)
+ java.base@17.0.9/java.net.Socket$SocketInputStream.read(Socket.java:966)
+ java.base@17.0.9/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:484)
+ java.base@17.0.9/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:478)
+ java.base@17.0.9/sun.security.ssl.SSLSocketInputRecord.decode(SSLSocketInputRecord.java:160)
+ java.base@17.0.9/sun.security.ssl.SSLTransport.decode(SSLTransport.java:111)
+ java.base@17.0.9/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1510)
+ java.base@17.0.9/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1425)
+ java.base@17.0.9/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:455)
+ java.base@17.0.9/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:426)
+ app//com.mysql.cj.protocol.ExportControlled.performTlsHandshake(ExportControlled.java:347)
+ app//com.mysql.cj.protocol.StandardSocketFactory.performTlsHandshake(StandardSocketFactory.java:191)
+ app//com.mysql.cj.protocol.a.NativeSocketConnection.performTlsHandshake(NativeSocketConnection.java:101)
+ app//com.mysql.cj.protocol.a.NativeProtocol.negotiateSSLConnection(NativeProtocol.java:369)
+ app//com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:205)
+ app//com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1429)
+ app//com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+ app//com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:944)
+ app//com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:814)
+ app//com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:444)
+ app//com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237)
+ app//com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+ app//com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+ app//com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+ app//com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+ app//com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+ app//com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:733)
+ app//com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:712)
+ java.base@17.0.9/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.9/java.lang.Thread.run(Thread.java:840)
+2023-11-05T06:23:05.789-05:00  INFO 3876 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T06:23:05.809-05:00  INFO 3876 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-05T06:23:07.789-05:00  INFO 3876 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-05T06:23:08.224-05:00  INFO 3876 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : Starting TaskifyAppApplication using Java 17.0.9 with PID 3876 (/home/talibnabi/Documents/taskify-app/taskify/target/classes started by talibnabi in /home/talibnabi/Documents/taskify-app/taskify)
+2023-11-05T06:23:08.226-05:00  INFO 3876 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-11-05T06:23:09.259-05:00  INFO 3876 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-05T06:23:09.372-05:00  INFO 3876 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 109 ms. Found 3 JPA repository interfaces.
+2023-11-05T06:23:10.056-05:00  INFO 3876 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-11-05T06:23:10.060-05:00  INFO 3876 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-05T06:23:10.061-05:00  INFO 3876 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2023-11-05T06:23:10.126-05:00  INFO 3876 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-05T06:23:10.126-05:00  INFO 3876 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1892 ms
+2023-11-05T06:23:10.349-05:00  INFO 3876 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-05T06:23:10.375-05:00  INFO 3876 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-11-05T06:23:12.957-05:00  INFO 3876 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@db413c5
+2023-11-05T06:23:12.958-05:00  INFO 3876 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-11-05T06:23:13.125-05:00  INFO 3876 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-11-05T06:23:16.007-05:00  INFO 3876 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-05T06:23:16.008-05:00  INFO 3876 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T06:23:16.575-05:00  WARN 3876 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-05T06:23:17.580-05:00  INFO 3876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@602164d4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5bee0434, org.springframework.security.web.context.SecurityContextHolderFilter@39b867a4, org.springframework.security.web.header.HeaderWriterFilter@76d735d8, org.springframework.web.filter.CorsFilter@5c2232dc, org.springframework.security.web.authentication.logout.LogoutFilter@24b3f8fc, org.taskifyapp.security.filter.JwtAuthFilter@71deec1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@432469f0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@c92fdb9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@62237acc, org.springframework.security.web.session.SessionManagementFilter@5f81a1bc, org.springframework.security.web.access.ExceptionTranslationFilter@2a1a1f9c, org.springframework.security.web.access.intercept.AuthorizationFilter@5fdc2c78]
+2023-11-05T06:23:17.796-05:00  INFO 3876 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-11-05T06:23:17.856-05:00  INFO 3876 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-11-05T06:23:17.880-05:00  INFO 3876 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : Started TaskifyAppApplication in 9.8 seconds (process running for 48.356)
+2023-11-05T06:23:17.886-05:00  INFO 3876 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-11-05T06:23:25.952-05:00  INFO 3876 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-05T06:23:25.953-05:00  INFO 3876 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-11-05T06:23:25.958-05:00  INFO 3876 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2023-11-05T06:23:29.276-05:00  INFO 3876 --- [http-nio-8080-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 1396 ms
+2023-11-05T06:23:49.792-05:00  INFO 3876 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T06:23:49.794-05:00  INFO 3876 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2023-11-05T06:23:51.825-05:00  INFO 3876 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
