@@ -1,9 +1,7 @@
 package org.taskifyapp.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.taskifyapp.model.enums.TaskStatus;
 import org.taskifyapp.model.interfaces.TaskManager;
 
@@ -11,9 +9,12 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "task_taskify")
@@ -25,6 +26,7 @@ public class Task implements TaskManager, Serializable {
     @Id
     @SequenceGenerator(name = "task_sequence", sequenceName = "task_sequence")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "task_sequence")
+    @Column(name = "task_id")
     private Long id;
 
     @Column(name = "sender_id")
@@ -57,5 +59,18 @@ public class Task implements TaskManager, Serializable {
     @Override
     public void setTaskStatusWithId(Integer taskStatusId) {
         this.taskStatus = TaskStatus.fromId(taskStatusId);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(id, task.id) && Objects.equals(senderId, task.senderId) && Objects.equals(receiverId, task.receiverId) && Objects.equals(title, task.title) && Objects.equals(description, task.description) && Objects.equals(deadline, task.deadline) && taskStatus == task.taskStatus && Objects.equals(userAssigners, task.userAssigners);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, senderId, receiverId, title, description, deadline, taskStatus, userAssigners);
     }
 }

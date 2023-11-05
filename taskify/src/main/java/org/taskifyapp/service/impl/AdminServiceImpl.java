@@ -12,7 +12,6 @@ import org.taskifyapp.model.entity.User;
 import org.taskifyapp.model.enums.UserRole;
 import org.taskifyapp.repository.UserRepository;
 import org.taskifyapp.service.AdminService;
-import org.taskifyapp.service.OrganizationService;
 import org.taskifyapp.service.UserCheckingFieldService;
 
 
@@ -20,20 +19,31 @@ import org.taskifyapp.service.UserCheckingFieldService;
 @RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService, UserCheckingFieldService {
     private final UserRepository userRepository;
-    private final OrganizationService organizationService;
     private final ModelMapper modelMapper;
 
+
+    /**
+     * Creates a new user based on the provided registration request.
+     * Performs password matching checking, username duplicating checking, and email duplicating checking.
+     * The user is created, assigned the USER role, and associated with the same organization as the admin.
+     *
+     * @param registerRequest The registration request containing user information.
+     */
     @Override
     public void createUser(RegistrationRequest registerRequest) {
         passwordMatchingChecking(registerRequest);
         userUsernameDuplicatingChecking(registerRequest);
         userEmailDuplicatingChecking(registerRequest);
         String adminUsername = getAdminUsernameFromSecurityContextHolder();
-        User userAdmin = userRepository.findByEmail(adminUsername).orElseThrow(() -> new UserNotFoundException("user not found"));
+        User userAdmin = getUser(adminUsername);
         User user = modelMapper.map(registerRequest, User.class);
         user.setUserRole(UserRole.USER);
         user.setOrganization(userAdmin.getOrganization());
         userRepository.save(user);
+    }
+
+    private User getUser(String adminUsername) {
+        return userRepository.findByEmail(adminUsername).orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 
     private String getAdminUsernameFromSecurityContextHolder() {

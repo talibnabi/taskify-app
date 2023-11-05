@@ -2,6 +2,7 @@ package org.taskifyapp.model.dto.request;
 
 
 import lombok.Data;
+import org.taskifyapp.model.enums.TaskStatus;
 
 import java.time.LocalDateTime;
 
@@ -14,4 +15,6 @@ public class TaskCreationRequest {
     private Long receiverId;
 
     private LocalDateTime taskDeadline;
+
+    private TaskStatus taskStatus;
 }

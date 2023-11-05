@@ -1,10 +1,7 @@
 package org.taskifyapp.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,9 +13,11 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,6 +30,7 @@ public class User implements UserManager, UserDetails, Serializable {
     @Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
+    @Column(name = "user_id")
     private Long id;
 
     @Column(name = "username")
@@ -102,5 +102,18 @@ public class User implements UserManager, UserDetails, Serializable {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(email, user.email) && userRole == user.userRole && Objects.equals(codeForMailSending, user.codeForMailSending) && Objects.equals(userTasks, user.userTasks) && Objects.equals(organization, user.organization);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, email, userRole, codeForMailSending, userTasks, organization);
     }
 }
