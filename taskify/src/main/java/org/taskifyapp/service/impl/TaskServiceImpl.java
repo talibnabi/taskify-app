@@ -8,6 +8,7 @@ import org.taskifyapp.exception.custom.OrganizationIsNotSamenessException;
 import org.taskifyapp.exception.custom.TaskNotFoundException;
 import org.taskifyapp.exception.custom.UserNotFoundException;
 import org.taskifyapp.model.dto.request.TaskCreationRequest;
+import org.taskifyapp.model.dto.request.TaskUpdatingRequest;
 import org.taskifyapp.model.dto.response.TaskResponse;
 import org.taskifyapp.model.dto.response.UserResponse;
 import org.taskifyapp.model.entity.Task;
@@ -19,6 +20,7 @@ import org.taskifyapp.service.UserService;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -29,31 +31,33 @@ public class TaskServiceImpl implements TaskService {
     private final UserService userService;
     private final ModelMapper modelMapper;
 
-//    @Override
-//    public TaskResponse getTaskById(Long id) {
-//        Task task = getTask(id);
-//        TaskResponse taskResponse = modelMapper.map(task, TaskResponse.class);
-//        return taskResponse;
-//    }
-//
-//    @Override
-//    public List<TaskResponse> getAllTaskList(Long userId) {
-//        List<Task> taskList = getAllTask(userId);
-//        List<TaskResponse> taskResponses = taskList
-//                .stream()
-//                .map(task -> modelMapper.map(task, TaskResponse.class))
-//                .collect(Collectors.toList());
-//        return taskResponses;
-//    }
-//
-//    @Override
-//    public void update(TaskUpdatingRequest request) {
-//        getTask(request.getTaskId());
-//        if (organizationSamenessChecker(getUserFromSecurityContextHolder(), getUser(request.getReceiverId()))) {
-//            Task task = modelMapper.map(request, Task.class);
-//            taskRepository.save(task);
-//        }
-//    }
+    @Override
+    public TaskResponse getTaskById(Long id) {
+        Task task = getTask(id);
+        TaskResponse taskResponse = modelMapper.map(task, TaskResponse.class);
+        return taskResponse;
+    }
+
+    @Override
+    public List<TaskResponse> getAllTaskList(Long userId) {
+        List<Task> taskList = getAllTask(userId);
+        List<TaskResponse> taskResponses = taskList
+                .stream()
+                .map(task -> modelMapper.map(task, TaskResponse.class))
+                .collect(Collectors.toList());
+        return taskResponses;
+    }
+
+    @Override
+    public void update(TaskUpdatingRequest request) {
+        String adminUserName = getAdminUsernameFromSecurityContextHolder();
+        User admin = getUser(adminUserName);
+        getTask(request.getTaskId());
+        if (organizationSamenessChecker(admin, getUser(request.getReceiverId()))) {
+            Task task = modelMapper.map(request, Task.class);
+            taskRepository.save(task);
+        }
+    }
 
     @Override
     public void create(TaskCreationRequest request) {
@@ -63,21 +67,20 @@ public class TaskServiceImpl implements TaskService {
         UserResponse receiver = getUserResponse(request.getReceiverId());
         if (organizationSamenessChecker(sender, receiver)) {
             Task task = modelMapper.map(request, Task.class);
-            task.setSenderId(sender.getId());
-            task.setReceiverId(receiver.getId());
-            taskRepository.save(task);
+            Task buildedTask = buildTask(task, sender, receiver, request);
+            taskRepository.save(buildedTask);
         }
     }
 
-    private User getUser(String adminUsername) {
-        return userRepository.findByEmail(adminUsername).orElseThrow(() -> new UserNotFoundException("User not found"));
+
+    @Override
+    public void delete(Long id) {
+        String adminUsername = getAdminUsernameFromSecurityContextHolder();
+        User sender = getUser(adminUsername);
+        if (taskDeletionChecker(getTaskById(id), sender)) {
+            taskRepository.deleteById(id);
+        }
     }
-//    @Override
-//    public void delete(Long id) {
-//      if(taskDeletionChecker(getTaskById(id),getUserFromSecurityContextHolder())){
-//          taskRepository.deleteById(id);
-//      }
-//    }
 
     private UserResponse getUserResponse(Long id) {
         UserResponse receiver = userService.getUserResponseById(id);
@@ -89,6 +92,21 @@ public class TaskServiceImpl implements TaskService {
             throw new TaskNotFoundException("Task not found.");
         }
         return true;
+    }
+
+    private Task buildTask(Task task, User sender, UserResponse receiver, TaskCreationRequest request) {
+        return task.builder()
+                .senderId(sender.getId())
+                .title(request.getTaskTitle())
+                .description(request.getTaskDescription())
+                .taskStatus(request.getTaskStatus())
+                .receiverId(receiver.getId())
+                .deadline(request.getTaskDeadline())
+                .build();
+    }
+
+    private User getUser(String adminUsername) {
+        return userRepository.findByEmail(adminUsername).orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 
     private boolean organizationSamenessChecker(User sender, UserResponse receiver) {
