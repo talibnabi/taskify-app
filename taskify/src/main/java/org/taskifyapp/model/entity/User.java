@@ -49,12 +49,15 @@ public class User implements UserManager, UserDetails, Serializable {
     @Column(name = "code_for_mail_sending")
     private String codeForMailSending;
 
-    @ManyToMany
-    @JoinTable(
-            name = "task_assigned",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "task_id"))
-    private List<Task> userTasks;
+//    @ManyToMany
+//    @JoinTable(
+//            name = "task_assigned",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "task_id"))
+//    private List<Task> userTasks;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Task> tasks;
 
     @OneToOne
     private Organization organization;
@@ -109,11 +112,11 @@ public class User implements UserManager, UserDetails, Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(email, user.email) && userRole == user.userRole && Objects.equals(codeForMailSending, user.codeForMailSending) && Objects.equals(userTasks, user.userTasks) && Objects.equals(organization, user.organization);
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(email, user.email) && userRole == user.userRole && Objects.equals(codeForMailSending, user.codeForMailSending);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, email, userRole, codeForMailSending, userTasks, organization);
+        return Objects.hash(id, username, email, userRole, codeForMailSending);
     }
 }

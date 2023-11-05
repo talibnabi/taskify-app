@@ -14,4 +14,5 @@ public interface UserService {
 
     List<UserResponse> getUserResponseByOrganizationId(Long organizationId);
 
+
 }

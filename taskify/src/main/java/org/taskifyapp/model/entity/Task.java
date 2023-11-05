@@ -48,8 +48,12 @@ public class Task implements TaskManager, Serializable {
     @Column(name = "task_status")
     private TaskStatus taskStatus;
 
-    @ManyToMany(mappedBy = "userTasks")
-    private List<User> userAssigners;
+//    @ManyToMany(mappedBy = "userTasks")
+//    private List<User> userAssigners;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Override
     public Integer getTaskStatusWithId() {
@@ -66,11 +70,11 @@ public class Task implements TaskManager, Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return Objects.equals(id, task.id) && Objects.equals(senderId, task.senderId) && Objects.equals(receiverId, task.receiverId) && Objects.equals(title, task.title) && Objects.equals(description, task.description) && Objects.equals(deadline, task.deadline) && taskStatus == task.taskStatus && Objects.equals(userAssigners, task.userAssigners);
+        return Objects.equals(id, task.id) && Objects.equals(senderId, task.senderId) && Objects.equals(receiverId, task.receiverId) && Objects.equals(title, task.title) && Objects.equals(description, task.description) && Objects.equals(deadline, task.deadline) && taskStatus == task.taskStatus;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, senderId, receiverId, title, description, deadline, taskStatus, userAssigners);
+        return Objects.hash(id, senderId, receiverId, title, description, deadline, taskStatus);
     }
 }
