@@ -33,7 +33,7 @@ public class Organization implements Serializable {
     private String address;
 
     @OneToOne
-    private User userId;
+    private User user;
 
 
 }

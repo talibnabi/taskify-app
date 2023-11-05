@@ -85,9 +85,9 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
         User user = getUserByUsername(request.getUsername());
         organizationNameDuplicatingChecking(request);
         Organization organization = modelMapper.map(request, Organization.class);
-        organization.setUserId(user);
+        organization.setUser(user);
         organizationService.saveOrganization(organization);
-        user.setOrganizationId(organization);
+        user.setOrganization(organization);
         userRepository.save(user);
     }
 
@@ -101,14 +101,14 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
 
     @Override
     public void userEmailDuplicatingChecking(RegistrationRequest registerRequest) {
-        if (userService.findUserByEmail(registerRequest.getEmail()).isPresent()) {
+        if (userRepository.findByEmail(registerRequest.getEmail()).isPresent()) {
             throw new DuplicateException("You cannot create a new user with the same email.");
         }
     }
 
     @Override
     public void userUsernameDuplicatingChecking(RegistrationRequest registerRequest) {
-        if (userService.findUserByUsername(registerRequest.getUsername()).isPresent()) {
+        if (userRepository.findUserByUsername(registerRequest.getUsername()).isPresent()) {
             throw new DuplicateException("You cannot create a new user with the same username.");
         }
     }
@@ -146,7 +146,7 @@ public class AuthServiceImpl implements AuthService, UserCheckingFieldService,
     }
 
     private User getUserByUsername(String username) {
-        return userService.findUserByUsername(username).orElseThrow(
+        return userRepository.findUserByUsername(username).orElseThrow(
                 () -> new UserNotFoundException("User not found with this username")
         );
     }

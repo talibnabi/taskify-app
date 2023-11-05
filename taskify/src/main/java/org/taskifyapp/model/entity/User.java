@@ -57,7 +57,7 @@ public class User implements UserManager, UserDetails, Serializable {
     private List<Task> userTasks;
 
     @OneToOne
-    private Organization organizationId;
+    private Organization organization;
 
     @Override
     public Integer getUserRoleWithId() {

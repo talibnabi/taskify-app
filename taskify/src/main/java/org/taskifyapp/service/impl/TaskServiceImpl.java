@@ -87,8 +87,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     private boolean organizationSamenessChecker(User sender, UserResponse receiver) {
-        if (Objects.isNull(sender.getOrganizationId().getId()) ||
-                !sender.getOrganizationId().getId().equals(receiver.getOrganizationId())) {
+        if (Objects.isNull(sender.getOrganization().getId()) ||
+                !sender.getOrganization().getId().equals(receiver.getOrganizationId())) {
             throw new OrganizationIsNotSamenessException("Organizations is not sameness");
         }
         return true;

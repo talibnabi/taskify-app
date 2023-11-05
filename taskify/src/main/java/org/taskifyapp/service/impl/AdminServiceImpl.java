@@ -11,16 +11,16 @@ import org.taskifyapp.exception.custom.PasswordNotMatchedException;
 import org.taskifyapp.model.dto.request.RegistrationRequest;
 import org.taskifyapp.model.entity.Organization;
 import org.taskifyapp.model.entity.User;
+import org.taskifyapp.repository.UserRepository;
 import org.taskifyapp.service.AdminService;
 import org.taskifyapp.service.OrganizationService;
 import org.taskifyapp.service.UserCheckingFieldService;
-import org.taskifyapp.service.UserService;
 
 
 @Service
 @RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService, UserCheckingFieldService {
-    private final UserService userService;
+    private final UserRepository userRepository;
     private final OrganizationService organizationService;
     private final ModelMapper modelMapper;
 
@@ -32,7 +32,7 @@ public class AdminServiceImpl implements AdminService, UserCheckingFieldService 
         User admin = getUserAdmin();
         User user = modelMapper.map(registerRequest, User.class);
         Organization organization = getOrganizationForUser(admin);
-        user.setOrganizationId(organization);
+        user.setOrganization(organization);
     }
 
     @Override
@@ -44,20 +44,20 @@ public class AdminServiceImpl implements AdminService, UserCheckingFieldService 
 
     @Override
     public void userEmailDuplicatingChecking(RegistrationRequest registerRequest) {
-        if (userService.findUserByEmail(registerRequest.getEmail()).isPresent()) {
+        if (userRepository.findByEmail(registerRequest.getEmail()).isPresent()) {
             throw new DuplicateException("You cannot create a new user with the same email.");
         }
     }
 
     @Override
     public void userUsernameDuplicatingChecking(RegistrationRequest registerRequest) {
-        if (userService.findUserByUsername(registerRequest.getUsername()).isPresent()) {
+        if (userRepository.findUserByUsername(registerRequest.getUsername()).isPresent()) {
             throw new DuplicateException("You cannot create a new user with the same username.");
         }
     }
 
     private Organization getOrganizationForUser(User admin) {
-        return organizationService.getOrganizationById(admin.getOrganizationId().getId()).stream().findFirst().orElseThrow(
+        return organizationService.getOrganizationById(admin.getOrganization().getId()).stream().findFirst().orElseThrow(
                 () -> new OrganizationNotFoundException("Organization not found"));
     }
 
