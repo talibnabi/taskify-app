@@ -13,6 +13,7 @@ import org.taskifyapp.model.dto.response.TaskResponse;
 import org.taskifyapp.model.dto.response.UserResponse;
 import org.taskifyapp.model.entity.Task;
 import org.taskifyapp.model.entity.User;
+import org.taskifyapp.notification.EmailSending;
 import org.taskifyapp.repository.TaskRepository;
 import org.taskifyapp.repository.UserRepository;
 import org.taskifyapp.service.TaskService;
@@ -30,6 +31,7 @@ public class TaskServiceImpl implements TaskService {
     private final UserRepository userRepository;
     private final UserService userService;
     private final ModelMapper modelMapper;
+    private final EmailSending emailSending;
 
     @Override
     public TaskResponse getTaskById(Long id) {
@@ -75,6 +77,10 @@ public class TaskServiceImpl implements TaskService {
             Task task = modelMapper.map(request, Task.class);
             Task buildedTask = buildTask(task, sender, receiver, request);
             taskRepository.save(buildedTask);
+
+            /*email send to him/her   (when task assign to him/her)
+             * */
+            emailSending.sendToUser(getUserByUserId(request.getReceiverId()), adminUsername, sender.getOrganization().getOrganizationName());
         }
     }
 

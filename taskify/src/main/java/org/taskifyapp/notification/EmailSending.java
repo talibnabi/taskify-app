@@ -18,13 +18,6 @@ public class EmailSending {
     private final JavaMailSender javaMailSender;
 
     @SneakyThrows
-    public void sendRegistration(User user) {
-        String replacedContent = SEND_REGISTRATION_CONTENT.replace(NAME, user.getUsername());
-        replacedContent = replacedContent.replace(CODE, String.valueOf(user.getCodeForMailSending()));
-        sendEmail(user.getEmail(), replacedContent, SEND_REGISTRATION_SUBJECT);
-    }
-
-    @SneakyThrows
     public void sendToUser(User user, String adminUsername, String organizationName) {
         String replacedContent = SEND_TO_USER_CONTENT.replace(USER_KEY, user.getUsername());
         replacedContent = replacedContent.replace(ADMIN_KEY, adminUsername);
