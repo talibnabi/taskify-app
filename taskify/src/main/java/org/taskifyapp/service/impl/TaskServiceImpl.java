@@ -51,12 +51,20 @@ public class TaskServiceImpl implements TaskService {
     public void update(TaskUpdatingRequest request) {
         String adminUserName = getAdminUsernameFromSecurityContextHolder();
         User admin = getUser(adminUserName);
-        getTask(request.getTaskId());
+        User userReceiver = getUserByUserId(request.getReceiverId());
         if (organizationSamenessChecker(admin, getUser(request.getReceiverId()))) {
-            Task task = modelMapper.map(request, Task.class);
-            taskRepository.save(task);
+            Task oldTask = getTask(request.getTaskId());
+            oldTask.setTitle(request.getTaskTitle());
+            oldTask.setSenderId(admin.getId());
+            oldTask.setDescription(request.getTaskDescription());
+            oldTask.setReceiverId(request.getReceiverId());
+            oldTask.setUser(userReceiver);
+            oldTask.setDeadline(request.getDeadline());
+            oldTask.setTaskStatus(request.getTaskStatus());
+            taskRepository.save(oldTask);
         }
     }
+
 
     @Override
     public void create(TaskCreationRequest request) {
@@ -70,7 +78,6 @@ public class TaskServiceImpl implements TaskService {
         }
     }
 
-
     @Override
     public void delete(Long id) {
         String adminUsername = getAdminUsernameFromSecurityContextHolder();
@@ -79,6 +86,7 @@ public class TaskServiceImpl implements TaskService {
             taskRepository.deleteById(id);
         }
     }
+
 
     private UserResponse getUserResponse(Long id) {
         UserResponse receiver = userService.getUserResponseById(id);
