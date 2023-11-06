@@ -11,7 +11,7 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: #username for "email notification"
+    username: #username for "email notification (write email that you will send email to user with this email)"
     password: #password for "email notification"
     protocol: smtp
     properties:
