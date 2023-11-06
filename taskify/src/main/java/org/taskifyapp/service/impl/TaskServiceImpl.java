@@ -43,6 +43,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<TaskResponse> getAllTaskList(Long userId) {
         List<Task> tasks = getAllTask(userId);
+        System.out.println(tasks);
         List<TaskResponse> taskResponses = tasks.stream()
                 .map(task -> modelMapper.map(task, TaskResponse.class))
                 .collect(Collectors.toList());
@@ -130,10 +131,13 @@ public class TaskServiceImpl implements TaskService {
     }
 
     private List<Task> getAllTask(Long userId) {
-        User user = getUserByUserId(userId);
-        List<Task> taskList = user.getTasks();
+        List<Task> taskList = taskRepository.findTasksByReceiverId(userId)
+                .orElseThrow(
+                        () -> new UserNotFoundException("User not found.")
+                );
         return taskList;
     }
+
 
     private User getUserByUserId(Long userId) {
         return userRepository.findUserById(userId).orElseThrow(

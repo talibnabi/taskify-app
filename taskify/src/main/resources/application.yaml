@@ -1,9 +1,9 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://allinone.cn5daduvgses.us-east-1.rds.amazonaws.com:3306/taskify
-    username: admin
-    password: Admin1234
+    url: #write your url
+    username: #write your db username
+    password: #write your db password
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true

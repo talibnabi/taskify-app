@@ -22819,3 +22819,204 @@ jakarta.mail.AuthenticationFailedException: failed to connect, no password speci
 2023-11-05T20:21:24.501-05:00  INFO 14209 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-11-05T20:21:24.510-05:00  INFO 14209 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-11-05T20:21:26.586-05:00  INFO 14209 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-05T20:33:40.154-05:00  INFO 15539 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : Starting TaskifyAppApplication using Java 17.0.9 with PID 15539 (/home/talibnabi/Documents/taskify-app/taskify/target/classes started by talibnabi in /home/talibnabi/Documents/taskify-app/taskify)
+2023-11-05T20:33:40.163-05:00  INFO 15539 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-11-05T20:33:40.349-05:00  INFO 15539 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-05T20:33:40.351-05:00  INFO 15539 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-05T20:33:43.016-05:00  INFO 15539 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-05T20:33:43.183-05:00  INFO 15539 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 149 ms. Found 3 JPA repository interfaces.
+2023-11-05T20:33:44.839-05:00  INFO 15539 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-11-05T20:33:44.862-05:00  INFO 15539 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-05T20:33:44.863-05:00  INFO 15539 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2023-11-05T20:33:45.014-05:00  INFO 15539 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-05T20:33:45.015-05:00  INFO 15539 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4658 ms
+2023-11-05T20:33:45.386-05:00  INFO 15539 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-05T20:33:45.479-05:00  INFO 15539 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-11-05T20:33:46.068-05:00  INFO 15539 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-05T20:33:49.297-05:00  INFO 15539 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1aa2878e
+2023-11-05T20:33:49.303-05:00  INFO 15539 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-05T20:33:49.848-05:00  INFO 15539 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-11-05T20:33:54.928-05:00  INFO 15539 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-05T20:33:54.958-05:00  INFO 15539 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T20:33:57.641-05:00  WARN 15539 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-05T20:33:59.628-05:00  INFO 15539 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@fcec1ea, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@29d6c4ca, org.springframework.security.web.context.SecurityContextHolderFilter@a56146e, org.springframework.security.web.header.HeaderWriterFilter@5dc94241, org.springframework.web.filter.CorsFilter@783860eb, org.springframework.security.web.authentication.logout.LogoutFilter@ddb26af, org.taskifyapp.security.filter.JwtAuthFilter@2db22c69, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@72bdc611, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4034ddf8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@135ad314, org.springframework.security.web.session.SessionManagementFilter@44c79602, org.springframework.security.web.access.ExceptionTranslationFilter@51b37bb5, org.springframework.security.web.access.intercept.AuthorizationFilter@6ba9b2f3]
+2023-11-05T20:34:00.371-05:00  INFO 15539 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-11-05T20:34:00.472-05:00  INFO 15539 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-11-05T20:34:00.502-05:00  INFO 15539 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : Started TaskifyAppApplication in 22.094 seconds (process running for 24.25)
+2023-11-05T20:34:06.784-05:00  INFO 15539 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-05T20:34:06.785-05:00  INFO 15539 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-11-05T20:34:06.790-05:00  INFO 15539 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2023-11-05T20:34:08.212-05:00  INFO 15539 --- [http-nio-8080-exec-1] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 1279 ms
+2023-11-05T20:39:09.280-05:00  INFO 15539 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 2 deletions, 0 modifications)
+2023-11-05T20:39:09.290-05:00  INFO 15539 --- [Thread-5] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-11-05T20:39:09.292-05:00  INFO 15539 --- [Thread-5] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-11-05T20:39:09.298-05:00  WARN 15539 --- [Thread-5] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.9/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.9/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.9/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.9/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.9/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.9/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.9/java.lang.Thread.run(Thread.java:840)
+2023-11-05T20:39:09.323-05:00  INFO 15539 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T20:39:09.339-05:00  INFO 15539 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-05T20:39:11.342-05:00  INFO 15539 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-05T20:39:12.018-05:00  INFO 15539 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : Starting TaskifyAppApplication using Java 17.0.9 with PID 15539 (/home/talibnabi/Documents/taskify-app/taskify/target/classes started by talibnabi in /home/talibnabi/Documents/taskify-app/taskify)
+2023-11-05T20:39:12.019-05:00  INFO 15539 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-11-05T20:39:13.168-05:00  INFO 15539 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-05T20:39:13.245-05:00  INFO 15539 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 2 JPA repository interfaces.
+2023-11-05T20:39:13.952-05:00  INFO 15539 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-11-05T20:39:13.955-05:00  INFO 15539 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-05T20:39:13.961-05:00  INFO 15539 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2023-11-05T20:39:14.014-05:00  INFO 15539 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-05T20:39:14.020-05:00  INFO 15539 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1988 ms
+2023-11-05T20:39:14.206-05:00  INFO 15539 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-05T20:39:14.229-05:00  INFO 15539 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-11-05T20:39:16.771-05:00  INFO 15539 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@69b92517
+2023-11-05T20:39:16.772-05:00  INFO 15539 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-11-05T20:39:16.935-05:00  INFO 15539 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-11-05T20:39:19.202-05:00  INFO 15539 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-05T20:39:19.203-05:00  INFO 15539 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T20:39:19.931-05:00  WARN 15539 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'taskController' defined in file [/home/talibnabi/Documents/taskify-app/taskify/target/classes/org/taskifyapp/controller/TaskController.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'org.taskifyapp.service.TaskService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2023-11-05T20:39:19.934-05:00  INFO 15539 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T20:39:19.936-05:00  INFO 15539 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2023-11-05T20:39:20.763-05:00  INFO 15539 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2023-11-05T20:39:20.768-05:00  INFO 15539 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-11-05T20:39:20.802-05:00  INFO 15539 --- [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2023-11-05T20:39:20.929-05:00 ERROR 15539 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in org.taskifyapp.controller.TaskController required a bean of type 'org.taskifyapp.service.TaskService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.taskifyapp.service.TaskService' in your configuration.
+
+2023-11-05T20:39:22.462-05:00  INFO 15539 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : Starting TaskifyAppApplication using Java 17.0.9 with PID 15539 (/home/talibnabi/Documents/taskify-app/taskify/target/classes started by talibnabi in /home/talibnabi/Documents/taskify-app/taskify)
+2023-11-05T20:39:22.463-05:00  INFO 15539 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-11-05T20:39:23.210-05:00  INFO 15539 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-05T20:39:23.273-05:00  INFO 15539 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 60 ms. Found 3 JPA repository interfaces.
+2023-11-05T20:39:23.675-05:00  INFO 15539 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-11-05T20:39:23.677-05:00  INFO 15539 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-05T20:39:23.677-05:00  INFO 15539 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2023-11-05T20:39:23.704-05:00  INFO 15539 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2023-11-05T20:39:23.704-05:00  INFO 15539 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1235 ms
+2023-11-05T20:39:23.838-05:00  INFO 15539 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-05T20:39:23.860-05:00  INFO 15539 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2023-11-05T20:39:26.088-05:00  INFO 15539 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74a4a0e8
+2023-11-05T20:39:26.089-05:00  INFO 15539 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2023-11-05T20:39:26.254-05:00  INFO 15539 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-11-05T20:39:28.956-05:00  INFO 15539 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-05T20:39:28.957-05:00  INFO 15539 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T20:39:29.587-05:00  WARN 15539 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-05T20:39:30.368-05:00  INFO 15539 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2ba62b65, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@b4710ab, org.springframework.security.web.context.SecurityContextHolderFilter@54760dd9, org.springframework.security.web.header.HeaderWriterFilter@5c83c27d, org.springframework.web.filter.CorsFilter@53c6c02f, org.springframework.security.web.authentication.logout.LogoutFilter@5e7fc7d5, org.taskifyapp.security.filter.JwtAuthFilter@577a43d9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4386920c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@154302b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@67c85e3, org.springframework.security.web.session.SessionManagementFilter@b261959, org.springframework.security.web.access.ExceptionTranslationFilter@22b6aa39, org.springframework.security.web.access.intercept.AuthorizationFilter@96b8094]
+2023-11-05T20:39:30.523-05:00  INFO 15539 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-11-05T20:39:30.553-05:00  INFO 15539 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-11-05T20:39:30.567-05:00  INFO 15539 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : Started TaskifyAppApplication in 8.2 seconds (process running for 354.315)
+2023-11-05T20:39:30.572-05:00  INFO 15539 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-11-05T20:40:30.523-05:00  INFO 15539 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T20:40:30.525-05:00  INFO 15539 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2023-11-05T20:40:32.470-05:00  INFO 15539 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2023-11-05T20:40:44.594-05:00  INFO 16491 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : Starting TaskifyAppApplication using Java 17.0.9 with PID 16491 (/home/talibnabi/Documents/taskify-app/taskify/target/classes started by talibnabi in /home/talibnabi/Documents/taskify-app/taskify)
+2023-11-05T20:40:44.608-05:00  INFO 16491 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-11-05T20:40:44.840-05:00  INFO 16491 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-05T20:40:44.842-05:00  INFO 16491 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-05T20:40:47.443-05:00  INFO 16491 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-05T20:40:47.698-05:00  INFO 16491 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 231 ms. Found 3 JPA repository interfaces.
+2023-11-05T20:40:49.618-05:00  INFO 16491 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-11-05T20:40:49.646-05:00  INFO 16491 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-05T20:40:49.648-05:00  INFO 16491 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2023-11-05T20:40:49.817-05:00  INFO 16491 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-05T20:40:49.819-05:00  INFO 16491 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4975 ms
+2023-11-05T20:40:50.217-05:00  INFO 16491 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-05T20:40:50.343-05:00  INFO 16491 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-11-05T20:40:51.119-05:00  INFO 16491 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-05T20:40:54.259-05:00  INFO 16491 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6603f21a
+2023-11-05T20:40:54.266-05:00  INFO 16491 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-05T20:40:54.794-05:00  INFO 16491 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-11-05T20:40:59.888-05:00  INFO 16491 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-05T20:40:59.914-05:00  INFO 16491 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T20:41:02.561-05:00  WARN 16491 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-05T20:41:04.819-05:00  INFO 16491 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@51675dcd, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@fcec1ea, org.springframework.security.web.context.SecurityContextHolderFilter@71db0c9e, org.springframework.security.web.header.HeaderWriterFilter@279c125e, org.springframework.web.filter.CorsFilter@29d6c4ca, org.springframework.security.web.authentication.logout.LogoutFilter@f8ae4e9, org.taskifyapp.security.filter.JwtAuthFilter@76971bbc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@72d9e4a0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5c251523, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@783860eb, org.springframework.security.web.session.SessionManagementFilter@4637b82b, org.springframework.security.web.access.ExceptionTranslationFilter@3c0f3567, org.springframework.security.web.access.intercept.AuthorizationFilter@3bfca17a]
+2023-11-05T20:41:05.512-05:00  INFO 16491 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-11-05T20:41:05.636-05:00  INFO 16491 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-11-05T20:41:05.674-05:00  INFO 16491 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : Started TaskifyAppApplication in 22.886 seconds (process running for 25.213)
+2023-11-05T20:41:15.279-05:00  INFO 16491 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-05T20:41:15.281-05:00  INFO 16491 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-11-05T20:41:15.285-05:00  INFO 16491 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2023-11-05T20:41:40.526-05:00  INFO 16491 --- [http-nio-8080-exec-2] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 1048 ms
+2023-11-05T20:43:36.363-05:00  INFO 16491 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T20:43:36.373-05:00  INFO 16491 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-05T20:43:38.300-05:00  INFO 16491 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-05T20:43:49.743-05:00  INFO 16960 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : Starting TaskifyAppApplication using Java 17.0.9 with PID 16960 (/home/talibnabi/Documents/taskify-app/taskify/target/classes started by talibnabi in /home/talibnabi/Documents/taskify-app/taskify)
+2023-11-05T20:43:49.750-05:00  INFO 16960 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-11-05T20:43:49.920-05:00  INFO 16960 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-05T20:43:49.922-05:00  INFO 16960 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-05T20:43:52.577-05:00  INFO 16960 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-05T20:43:52.718-05:00  INFO 16960 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 126 ms. Found 3 JPA repository interfaces.
+2023-11-05T20:43:54.085-05:00  INFO 16960 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-11-05T20:43:54.102-05:00  INFO 16960 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-05T20:43:54.102-05:00  INFO 16960 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2023-11-05T20:43:54.213-05:00  INFO 16960 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-05T20:43:54.214-05:00  INFO 16960 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4290 ms
+2023-11-05T20:43:54.511-05:00  INFO 16960 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-05T20:43:54.595-05:00  INFO 16960 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-11-05T20:43:55.176-05:00  INFO 16960 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-05T20:43:58.270-05:00  INFO 16960 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3102b409
+2023-11-05T20:43:58.277-05:00  INFO 16960 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-05T20:43:58.817-05:00  INFO 16960 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-11-05T20:44:03.799-05:00  INFO 16960 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-05T20:44:03.827-05:00  INFO 16960 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T20:44:06.673-05:00  WARN 16960 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-05T20:44:09.101-05:00  INFO 16960 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3ccbd6d6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7f05b8fe, org.springframework.security.web.context.SecurityContextHolderFilter@461efd6b, org.springframework.security.web.header.HeaderWriterFilter@6dce9f84, org.springframework.web.filter.CorsFilter@261159ed, org.springframework.security.web.authentication.logout.LogoutFilter@5c87c437, org.taskifyapp.security.filter.JwtAuthFilter@172e119c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@399500c9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@56ece06, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1bd695f2, org.springframework.security.web.session.SessionManagementFilter@a8c38e9, org.springframework.security.web.access.ExceptionTranslationFilter@ec9399d, org.springframework.security.web.access.intercept.AuthorizationFilter@39ef4c55]
+2023-11-05T20:44:09.848-05:00  INFO 16960 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-11-05T20:44:09.963-05:00  INFO 16960 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-11-05T20:44:10.002-05:00  INFO 16960 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : Started TaskifyAppApplication in 21.865 seconds (process running for 24.295)
+2023-11-05T20:44:15.369-05:00  INFO 16960 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-05T20:44:15.370-05:00  INFO 16960 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-11-05T20:44:15.374-05:00  INFO 16960 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2023-11-05T20:44:16.653-05:00  INFO 16960 --- [http-nio-8080-exec-1] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 1136 ms
+2023-11-05T20:46:19.198-05:00  INFO 16960 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T20:46:19.207-05:00  INFO 16960 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-05T20:46:21.321-05:00  INFO 16960 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-11-05T20:49:01.642-05:00  INFO 17689 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : Starting TaskifyAppApplication using Java 17.0.9 with PID 17689 (/home/talibnabi/Documents/taskify-app/taskify/target/classes started by talibnabi in /home/talibnabi/Documents/taskify-app/taskify)
+2023-11-05T20:49:01.651-05:00  INFO 17689 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-11-05T20:49:01.905-05:00  INFO 17689 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-05T20:49:01.908-05:00  INFO 17689 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-05T20:49:04.398-05:00  INFO 17689 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-05T20:49:04.585-05:00  INFO 17689 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 170 ms. Found 3 JPA repository interfaces.
+2023-11-05T20:49:06.211-05:00  INFO 17689 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-11-05T20:49:06.232-05:00  INFO 17689 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-05T20:49:06.234-05:00  INFO 17689 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2023-11-05T20:49:06.398-05:00  INFO 17689 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-05T20:49:06.399-05:00  INFO 17689 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4489 ms
+2023-11-05T20:49:06.708-05:00  INFO 17689 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-05T20:49:06.834-05:00  INFO 17689 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-11-05T20:49:07.561-05:00  INFO 17689 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-11-05T20:49:10.592-05:00  INFO 17689 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1035be87
+2023-11-05T20:49:10.598-05:00  INFO 17689 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-11-05T20:49:11.130-05:00  INFO 17689 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-11-05T20:49:16.223-05:00  INFO 17689 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-05T20:49:16.250-05:00  INFO 17689 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T20:49:19.118-05:00  WARN 17689 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-05T20:49:21.208-05:00  INFO 17689 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@a81c8ab, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@f038ec5, org.springframework.security.web.context.SecurityContextHolderFilter@6168a05d, org.springframework.security.web.header.HeaderWriterFilter@5f425ebf, org.springframework.web.filter.CorsFilter@6194bc5b, org.springframework.security.web.authentication.logout.LogoutFilter@6f4d08eb, org.taskifyapp.security.filter.JwtAuthFilter@26d0b565, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3e3af462, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a665353, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@719d9538, org.springframework.security.web.session.SessionManagementFilter@601ae437, org.springframework.security.web.access.ExceptionTranslationFilter@721622e8, org.springframework.security.web.access.intercept.AuthorizationFilter@2084b07e]
+2023-11-05T20:49:21.891-05:00  INFO 17689 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-11-05T20:49:22.009-05:00  INFO 17689 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-11-05T20:49:22.047-05:00  INFO 17689 --- [restartedMain] org.taskifyapp.TaskifyAppApplication     : Started TaskifyAppApplication in 22.488 seconds (process running for 24.946)
+2023-11-05T20:49:28.594-05:00  INFO 17689 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-05T20:49:28.596-05:00  INFO 17689 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-11-05T20:49:28.602-05:00  INFO 17689 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2023-11-05T20:49:30.050-05:00  INFO 17689 --- [http-nio-8080-exec-1] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 1280 ms
+2023-11-05T20:52:30.722-05:00  INFO 17689 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T20:52:30.730-05:00  INFO 17689 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-05T20:52:32.728-05:00  INFO 17689 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
