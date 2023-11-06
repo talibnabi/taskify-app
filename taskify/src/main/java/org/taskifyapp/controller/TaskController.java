@@ -28,7 +28,7 @@ public class TaskController {
      * @param taskCreationRequest The request data for creating a task.
      * @return ResponseEntity with a success message upon task creation.
      */
-    @PostMapping("/for-admin/create")
+    @PostMapping("/for-admin/create-task")
     public ResponseEntity<String> createTask(@Valid @RequestBody TaskCreationRequest taskCreationRequest) {
         taskService.create(taskCreationRequest);
         return ResponseEntity.ok("Task created successfully!");
@@ -41,7 +41,7 @@ public class TaskController {
      * @param taskId The ID of the task to delete.
      * @return ResponseEntity with a success message upon task deletion.
      */
-    @DeleteMapping("/for-admin/delete/{taskId}")
+    @DeleteMapping("/for-admin/delete-task/{taskId}")
     public ResponseEntity<String> deleteTask(@PathVariable("taskId") Long taskId) {
         taskService.delete(taskId);
         return ResponseEntity.ok("Task deleted successfully!");
@@ -54,7 +54,7 @@ public class TaskController {
      * @param taskUpdatingRequest The request data for updating a task.
      * @return ResponseEntity with a success message upon task update.
      */
-    @PutMapping("/for-admin/update")
+    @PutMapping("/for-admin/update-task")
     public ResponseEntity<String> updateTask(@RequestBody TaskUpdatingRequest taskUpdatingRequest) {
         taskService.update(taskUpdatingRequest);
         return ResponseEntity.ok("Task updated successfully!");
@@ -67,7 +67,7 @@ public class TaskController {
      * @param id The ID of the task to retrieve.
      * @return ResponseEntity with the requested task response.
      */
-    @GetMapping("/for-user/get-task/{id}")
+    @GetMapping("/for-user/get-task/id/{id}")
     public ResponseEntity<TaskResponse> getTaskById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(taskService.getTaskById(id));
     }
@@ -76,12 +76,12 @@ public class TaskController {
     /**
      * Get a list of tasks for a user.
      *
-     * @param id The ID of the user to retrieve tasks for.
+     * @param userId The ID of the user to retrieve tasks for.
      * @return ResponseEntity with a list of task responses.
      */
-    @GetMapping("/for-user/get-all-task/{id}")
-    public ResponseEntity<List<TaskResponse>> getAllUserTaskList(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(taskService.getAllTaskList(id));
+    @GetMapping("/for-user/get-all-task/user-id/{userId}")
+    public ResponseEntity<List<TaskResponse>> getAllUserTaskList(@PathVariable("userId") Long userId) {
+        return ResponseEntity.ok(taskService.getAllTaskList(userId));
     }
 
 }

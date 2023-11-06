@@ -11,6 +11,11 @@ import java.util.Objects;
 @Data
 public class RegistrationRequest {
 
+    public RegistrationRequest() {
+        this.password = "talibnabi2023";
+        this.passwordConfirmation = "talibnabi2023";
+    }
+
     private String username;
 
     @EmailValidation
